@@ -125,6 +125,18 @@ const withdrawCmd = new Command("withdraw")
         await waitForTx(args.provider, tx.hash)
     })
 
+const setCallableCmd = new Command("set-callable")
+    .description("Withdraw funds collected from fees")
+    .option('--bridge <address>', 'Bridge contract address', constants.BRIDGE_ADDRESS)
+    .option('--callableAddress', 'callable contract address', constants.CALLABLE_ADDRESS)
+    .action(async function (args) {
+        await setupParentArgs(args, args.parent.parent)
+        const bridgeInstance = new ethers.Contract(args.bridge, constants.ContractABIs.Bridge.abi, args.wallet);
+        log(args, `Withdrawing tokens (${args.amountOrId}) in contract ${args.tokenContract} to recipient ${args.recipient}`)
+        let tx = await bridgeInstance.adminSetCallableAddress(args.callableAddress)
+        await waitForTx(args.provider, tx.hash)
+    })
+
 const adminCmd = new Command("admin")
 
 adminCmd.addCommand(isRelayerCmd)
@@ -137,5 +149,6 @@ adminCmd.addCommand(pauseTransfersCmd)
 adminCmd.addCommand(unpauseTransfersCmd)
 adminCmd.addCommand(changeFeeCmd)
 adminCmd.addCommand(withdrawCmd)
+adminCmd.addCommand(setCallableCmd)
 
 module.exports = adminCmd

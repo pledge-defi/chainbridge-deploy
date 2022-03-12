@@ -56,6 +56,7 @@ module.exports.CENTRIFUGE_ASSET_STORE_ADDRESS = "0xc279648CE5cAa25B9bA753dAb0Dfe
 module.exports.WETC_ADDRESS = "0x84b141Aada70e2B0C3Ec25d24E81032328ea1b1A"
 module.exports.DEFAULT_SOURCE_ID = 0;
 module.exports.DEFAULT_DEST_ID = 1;
+module.exports.CALLABLE_ADDRESS = "0x62877dDCd49aD22f5eDfc6ac108e9a4b5D2bD88B";
 
 module.exports.ERC20_RESOURCEID = ethers.utils.hexZeroPad((this.ERC20_ADDRESS + ethers.utils.hexlify(this.DEFAULT_SOURCE_ID).substr(2)), 32);
 module.exports.ERC721_RESOURCEID = ethers.utils.hexZeroPad((this.ERC721_ADDRESS + ethers.utils.hexlify(this.DEFAULT_SOURCE_ID).substr(2)), 32);
