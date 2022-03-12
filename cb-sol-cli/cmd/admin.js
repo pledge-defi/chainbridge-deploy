@@ -128,7 +128,7 @@ const withdrawCmd = new Command("withdraw")
 const setCallableCmd = new Command("set-callable")
     .description("Withdraw funds collected from fees")
     .option('--bridge <address>', 'Bridge contract address', constants.BRIDGE_ADDRESS)
-    .option('--callableAddress', 'callable contract address', constants.CALLABLE_ADDRESS)
+    .option('--callableAddress <address>', 'callable contract address', constants.CALLABLE_ADDRESS)
     .action(async function (args) {
         await setupParentArgs(args, args.parent.parent)
         const bridgeInstance = new ethers.Contract(args.bridge, constants.ContractABIs.Bridge.abi, args.wallet);
