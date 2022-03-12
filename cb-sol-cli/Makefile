@@ -1,4 +1,4 @@
-SOL_URL=https://github.com/ChainSafe/chainbridge-solidity
+SOL_URL=https://github.com/pledge-defi/chainbridge-solidity
 SOL_VERSION="pledger-1.0.0"
 
 fetch-contracts:
